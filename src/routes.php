@@ -1,17 +1,17 @@
 <?php
 
-use CashMachine\Controller\WithdrawController;
+use CashMachine\Controller\CashMachineController;
 use CashMachine\Route;
 
 $route = new Route();
 
 $route->add('/withdraw', function() {
-	echo json_encode( "Empty Set" );
+	echo json_encode( [] );
 });
 
 $route->add('/withdraw/.+', function( int $cash) {
-    $withdraw = new WithdrawController( $cash );
-    $withdraw->getCash();
+    $cashMachine = new CashMachineController( $cash );
+    $cashMachine->getCash();
 });
 
 $route->listen();

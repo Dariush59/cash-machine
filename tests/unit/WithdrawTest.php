@@ -1,44 +1,45 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use CashMachine\Withdraw;
-use CashMachine\Controller\WithdrawController;
+use CashMachine\CashMachine;
+use CashMachine\Controller\CashMachineController;
+use CashMachine\Exceptions\NoteUnavailableException;
 
-class WithdrawTest extends TestCase
+class CashMashineTest extends TestCase
 {
+
+    public function testReturnResponseIsTrue()
+    {
+        $cashMachine = new cashMachine( 500 );
+        $expectedRes = [100,100,100,100,100];
+        $this->assertEquals($cashMachine->withdraw(), $expectedRes );
+    }
+
     public function testModelResponseIsArray()
     {
-        $withdraw = new Withdraw( 500 );
-        $this->assertInternalType( 'array', $withdraw->getWithdraw() );
+        $cashMachine = new cashMachine( 500 );
+        $this->assertInternalType( 'array', $cashMachine->withdraw() );
     }
 
     public function testNoteUnavailableException()
     {
-        $emess = NULL;
-        try {
-            $withdraw = new Withdraw( 115 );
-            $withdraw->getWithdraw();
-        } 
-        catch (Throwable $e) { $emess = $e->getMessage(); }
-        $this->assertEquals( $emess, 'throw NoteUnavailableException' );
+        $this->expectException( NoteUnavailableException::class );
+        $cashMachine = new CashMachine( 115 );
+        $cashMachine->withdraw();
     }
 
     public function testInvalidArgumentException()
     {
-        $emess = NULL;
-        try {
-            $withdraw = new Withdraw( -115 );
-            $withdraw->getWithdraw();
-        } 
-        catch (Throwable $e) { $emess = $e->getMessage(); }
-        $this->assertEquals( $emess, 'throw InvalidArgumentException' );
+        $this->expectException( InvalidArgumentException::class );
+        $cashMachine = new CashMachine( -115 );
+        $cashMachine->withdraw();
     }
 
     public function testEmptyArgumentException()
     {
         $emess = NULL;
         try {
-            $withdraw = new Withdraw();
+            $cashMachine = new CashMachine();
         } 
         catch (Throwable $e) { $emess = $e->getMessage(); }
             $this->assertRegexp( '/Too few arguments to function/', $emess );
@@ -48,7 +49,7 @@ class WithdrawTest extends TestCase
     {
         $emess = NULL;
         try {
-            $withdraw = new Withdraw( 'Dar' );
+            $cashMachine = new CashMachine( 'Dar' );
         } 
         catch (Throwable $e) { $emess = $e->getMessage(); }
             $this->assertRegexp( '/must be of the type integer/', $emess );

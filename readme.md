@@ -2,7 +2,7 @@
 
 ### Cash Machine
 #### The Problem
-Develop a solution that simulate the delivery of notes when a client does a withdraw in a cash machine.
+Develop a solution that simulate the delivery of notes when a client does a CashMashine in a cash machine.
 The basic requirements are the follow:
 Always deliver the lowest number of possible notes;
 It’s possible to get the amount requested with available notes;
@@ -59,7 +59,7 @@ composer install
 ```
 Then in browser Url or Postman
 ```
-http://localhost/careship/public/withdraw/200
+http://localhost/public/withdraw/200
 ```
 response is
 ```

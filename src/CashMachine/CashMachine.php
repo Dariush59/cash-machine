@@ -1,9 +1,10 @@
 <?php
 namespace CashMachine;
 
-use Exception;
+use InvalidArgumentException;
+use CashMachine\Exceptions\NoteUnavailableException;
 
-class Withdraw
+class CashMachine
 {
     protected $cash;
 
@@ -12,13 +13,13 @@ class Withdraw
         $this->cash = $cash;
     }
 
-    public function getWithdraw() : array
+    public function withdraw() : array
     {
         if ( $this->cash < 0 )
-            throw new Exception( "throw InvalidArgumentException" );
+            throw new InvalidArgumentException( "The value should be more then zero." );
 
         if ( $this->cash % 10 != 0 )
-            throw new Exception( "throw NoteUnavailableException" );
+            throw new NoteUnavailableException( "The value is out of range." );
 
         $cashList = [];
         while ( $this->cash >= 100){
