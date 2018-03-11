@@ -15,12 +15,6 @@ class CashMashineTest extends TestCase
         $this->assertEquals($cashMachine->withdraw(), $expectedRes );
     }
 
-    public function testModelResponseIsArray()
-    {
-        $cashMachine = new cashMachine( 500 );
-        $this->assertInternalType( 'array', $cashMachine->withdraw() );
-    }
-
     public function testNoteUnavailableException()
     {
         $this->expectException( NoteUnavailableException::class );

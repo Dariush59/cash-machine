@@ -56,6 +56,7 @@ In Terminal
 
 ```
 composer install
+composer dump-autoload -o
 ```
 Then in browser Url or Postman
 ```
