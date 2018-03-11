@@ -1,5 +1,5 @@
 {
-    "name": "dariush59/endpoint-api-for-cash-deposit",
+    "name": "dariush59/cash-machine",
     "description": "Develop a solution that simulate the delivery of notes when a client does a withdraw in a cash machine.",
     "license": "MIT",
     "authors": [{

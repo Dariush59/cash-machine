@@ -5,7 +5,7 @@ try {
 
     require_once __DIR__ . '/../config/setting.php';
 
-    require_once __DIR__ . '/CashMachine/routes.php';
+    require_once __DIR__ . '/routes.php';
 }
 catch (Throwable $e) {
     echo json_encode( $e->getMessage());

@@ -9,7 +9,7 @@ class WithdrawTest extends TestCase
     public function testModelResponseIsArray()
     {
         $withdraw = new Withdraw( 500 );
-        $this->assertInternalType('array', $withdraw->getWithdraw() );
+        $this->assertInternalType( 'array', $withdraw->getWithdraw() );
     }
 
     public function testNoteUnavailableException()
@@ -41,17 +41,17 @@ class WithdrawTest extends TestCase
             $withdraw = new Withdraw();
         } 
         catch (Throwable $e) { $emess = $e->getMessage(); }
-            $this->assertRegexp('/Too few arguments to function/', $emess);
+            $this->assertRegexp( '/Too few arguments to function/', $emess );
     }
 
     public function testNotIntArgumentException()
     {
         $emess = NULL;
         try {
-            $withdraw = new Withdraw('Dar');
+            $withdraw = new Withdraw( 'Dar' );
         } 
         catch (Throwable $e) { $emess = $e->getMessage(); }
-            $this->assertRegexp('/must be of the type integer/', $emess);
+            $this->assertRegexp( '/must be of the type integer/', $emess );
     }
 
 }

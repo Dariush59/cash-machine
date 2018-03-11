@@ -35,7 +35,7 @@ class Route
 				$subUri = explode( '/', $value );
 				
 				if ( !is_string( $subUri ) && is_array( $subUri ) &&  count( $subUri ) > 1 ) 
-					foreach ($subUri as $key => $value) {
+					foreach ( $subUri as $key => $value ) {
 						if ( $value == '.+' )
 							$replacementValues[] = $arrUri[$key];
 					}

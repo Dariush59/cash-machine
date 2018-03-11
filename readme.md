@@ -61,3 +61,7 @@ Then in browser Url or Postman
 ```
 http://localhost/careship/public/withdraw/200
 ```
+response is
+```
+[100,100]
+```
