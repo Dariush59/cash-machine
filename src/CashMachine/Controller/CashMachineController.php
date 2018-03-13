@@ -28,9 +28,6 @@ class CashMachineController
         catch ( Exception $e ) {
             echo json_encode( $e->getMessage());
         }
-        catch ( Error $error ) {
-            echo json_encode( $error );
-        }
     }
 }
 
